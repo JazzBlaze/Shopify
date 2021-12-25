@@ -6,7 +6,7 @@ Shopify website using python, flask and web technologies.
 
 This readme assumes that you are on windows and have powershell installed. (Search "powershell" in windows search to check).
 This also assumes that you are using powershell as shell.
-Open terminal (recommended to use [winterm](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701 but any terminal works)).
+Open terminal (recommended to use [winterm](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) but any terminal works).
 You can skip this part if git and python are in PATH.
 
 ## Install python and git
