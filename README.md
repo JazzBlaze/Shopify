@@ -11,8 +11,8 @@ You can skip this part if git and python are in PATH.
 
 ## Install python and git
 
-One of the ways to do this will be to use a package manager like [Scoop](https://scoop.sh/)
-Copy paste the codes in the terminal (copy the code and right click in the terminal app)
+One of the ways to do this will be to use a package manager like [Scoop](https://scoop.sh/).
+Copy paste the codes in the terminal (copy the code and right click in the terminal app).
 
 ```pwsh
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
