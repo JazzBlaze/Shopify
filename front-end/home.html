@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="This a dummy website created for testing out my html and css skills"
+    />
+    <meta property="og:title" content="Moshify...." />
+    <meta property="og:description" content="Moshify...." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://" />
+    <meta property="og:url" content="http://dummymosh.com" />
+    <title>Shopify - A trial Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav collapsible">
+        <a class="nav__brand" href="/"><img src="images/logo.svg" alt="" /></a>
+        <svg class="icon icon--white nav__toggler">
+          <use href="images/sprite.svg#menu"></use>
+        </svg>
+        <ul class="list nav__list collapsible__content">
+          <li class="nav__item"><a href="#">Sign in</a></li>
+          <li class="nav__item"><a href="#">Buy</a></li>
+          <li class="nav__item"><a href="#">Customer Care</a></li>
+          <li class="nav__item"><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="block block--dark block--skewed-left hero">
+      <div class="container grid grid--1x2">
+        <header class="block__header hero__content" data-aos="fade-right">
+          <h1 class="block__heading">Meet Your Home Needs With A Click</h1>
+          <p class="hero__tagline">
+            Tell us what you need & we deliver under 24 hours.
+          </p>
+          <a href="" class="btn btn--accent btn--stretched">Get Started</a>
+        </header>
+        <picture data-aos="slide-up">
+          <source
+            type="image/webp"
+            srcset="images/shopping-cart.png 1x, images/shopping-cart.png 2x"
+          />
+          <source
+            type="image/png"
+            srcset="images/shopping-cart.png 1x, images/shopping-cart.png 2x"
+          />
+          <img class="hero__image" src="images/shopping-cart.png" alt="" />
+        </picture>
+      </div>
+    </section>
+    <section class="block container block-product" data-aos="zoom-in-up">
+      <header class="block__header">
+        <h2>Search For Your Products</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
+          exercitationem?
+        </p>
+      </header>
+      <div class="input-group">
+        <input
+          type="text"
+          class="input"
+          placeholder="Enter product name here..."
+        />
+        <button class="btn btn--accent">
+          <svg class="icon icon--white">
+            <use href="images/sprite.svg#search"></use>
+          </svg>
+          Search
+        </button>
+      </div>
+    </section>
+    <section class="block container block-product" data-aos="fade-up">
+      <div class="grid grid--2x3">
+        <div class="card">
+          <header class="card__header">
+            <img src="images/product.png" alt="" />
+          </header>
+          <div class="card__body">
+            <h3>Product-Name</h3>
+            <ul class="list list--tick">
+              <li class="list__item">In-Stock</li>
+            </ul>
+            <button class="btn btn--outline btn--block">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <header class="card__header">
+            <img src="images/product.png" alt="" />
+          </header>
+          <div class="card__body">
+            <h3>Product-Name</h3>
+            <ul class="list list--tick">
+              <li class="list__item">In-Stock</li>
+            </ul>
+            <button class="btn btn--outline btn--block">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <header class="card__header">
+            <img src="images/product.png" alt="" />
+          </header>
+          <div class="card__body">
+            <h3>Product-Name</h3>
+            <ul class="list list--tick">
+              <li class="list__item">In-Stock</li>
+            </ul>
+            <button class="btn btn--outline btn--block">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <header class="card__header">
+            <img src="images/product.png" alt="" />
+          </header>
+          <div class="card__body">
+            <h3>Product-Name</h3>
+            <ul class="list list--tick">
+              <li class="list__item">In-Stock</li>
+            </ul>
+            <button class="btn btn--outline btn--block">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <header class="card__header">
+            <img src="images/product.png" alt="" />
+          </header>
+          <div class="card__body">
+            <h3>Product-Name</h3>
+            <ul class="list list--tick">
+              <li class="list__item">In-Stock</li>
+            </ul>
+            <button class="btn btn--outline btn--block">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <header class="card__header">
+            <img src="images/product.png" alt="" />
+          </header>
+          <div class="card__body">
+            <h3>Product-Name</h3>
+            <ul class="list list--tick">
+              <li class="list__item">In-Stock</li>
+            </ul>
+            <button class="btn btn--outline btn--block">Buy Now</button>
+          </div>
+        </div>
+    </section>
+    <section class="block" data-aos="zoom-in-up">
+      <header class="block__header">
+        <h2>What our Customers are Saying</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, ipsam.
+        </p>
+      </header>
+      <div class="container">
+        <div class="card testimonial">
+          <div class="grid grid--1x2">
+            <div class="testimonial__image">
+              <img
+                src="images/testimonial.jpg"
+                alt="A happy, smiling customer"
+              />
+              <span class="icon-container icon-container--accent">
+                <svg class="icon icon--white icon--small">
+                  <use href="images/sprite.svg#quotes"></use>
+                </svg>
+              </span>
+            </div>
+            <blockquote class="quote">
+              <p class="quote__text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Incidunt optio officiis dolore earum error eaque perferendis
+                laudantium sed praesentium dolorum.
+              </p>
+              <footer>
+                <div class="media">
+                  <div class="media__image">
+                    <svg class="icon icon--primary quote__line">
+                      <use href="images/sprite.svg#line"></use>
+                    </svg>
+                  </div>
+                  <div class="media__body">
+                    <h3 class="media__title quote__author">John Smith</h3>
+                    <p class="quote__organization">ABC Company</p>
+                  </div>
+                </div>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="callout callout--primary callout-signup">
+        <div class="grid grid--1x2">
+          <div class="callout__content">
+            <h2 class="callout__heading">Ready to Get Started?</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
+              voluptate tempora qui distinctio consequatur aliquid pariatur
+              cupiditate quas cum fugit.
+            </p>
+          </div>
+          <a href="#" class="btn btn--secondary btn--stretched">Sign-Up</a>
+        </div>
+      </div>
+    </div>
+    <footer class="block block--dark footer">
+      <div class="container grid footer__sections">
+        <section class="collapsible collapsible--expanded footer__section">
+          <div class="collapsible__header">
+            <h2 class="collapsible__heading footer__heading">Products</h2>
+            <svg class="icon icon--white collapsible__chevron">
+              <use href="images/sprite.svg#chevron"></use>
+            </svg>
+          </div>
+          <div class="collapsible__content">
+            <ul class="list">
+              <li><a href="#">Grocery</a></li>
+              <li><a href="#">Furniture</a></li>
+              <li><a href="#">Electronics</a></li>
+            </ul>
+          </div>
+        </section>
+        <section class="collapsible footer__section">
+          <div class="collapsible__header">
+            <h2 class="collapsible__heading footer__heading">Company</h2>
+            <svg class="icon icon--white collapsible__chevron">
+              <use href="images/sprite.svg#chevron"></use>
+            </svg>
+          </div>
+          <div class="collapsible__content">
+            <ul class="list">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Affiliates</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </section>
+        <section class="collapsible footer__section">
+          <div class="collapsible__header">
+            <h2 class="collapsible__heading footer__heading">Support</h2>
+            <svg class="icon icon--white collapsible__chevron">
+              <use href="images/sprite.svg#chevron"></use>
+            </svg>
+          </div>
+          <div class="collapsible__content">
+            <ul class="list">
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Knowledge Base</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+        </section>
+        <div class="footer__brand">
+          <img src="images/logo.svg" alt="" />
+          <p class="footer__copyright">Copyright 2021 ThejasXArghya</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/collapsible.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
