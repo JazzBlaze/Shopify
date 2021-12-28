@@ -2,7 +2,7 @@ import sqlite3
 from thefuzz import process
 from random import sample
 
-con = sqlite3.connect("items/items.db")
+con = sqlite3.connect("data/items.db")
 cur = con.cursor()
 # Initialize database if it doesn't exist
 cur.execute(
