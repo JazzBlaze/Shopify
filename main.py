@@ -21,6 +21,10 @@ def home():
 
 @app.route("/product", methods=["GET", "POST"])
 def product():
+    if request.method == "POST":
+        value = request.form.get("search")
+        query = urllib.parse.urlencode({"search": value}, doseq=False)
+        return redirect(url_for("product") + f"?{query}")
     search = request.args.get("search", "")
     items = db_utilities.get_items(search)
     return render_template("product.html", items=items)
