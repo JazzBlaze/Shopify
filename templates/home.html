@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block title %}
+Shopify - For your home needs
+{% endblock %}
 {% block content %}
     <section class="block block--dark block--skewed-left hero">
       <div class="container grid grid--1x2">
@@ -30,19 +33,22 @@
           exercitationem?
         </p>
       </header>
-      <div class="input-group">
-        <input
-          type="text"
-          class="input"
-          placeholder="Enter product name here..."
-        />
-        <button class="btn btn--accent">
-          <svg class="icon icon--white">
-            <use href="{{ url_for('static', filename='images/sprite.svg') }}#search"></use>
-          </svg>
-          Search
-        </button>
-      </div>
+      <form method="POST">
+        <div class="input-group">
+          <input
+            type="text"
+            class="input"
+            placeholder="Enter product name here..."
+            name = "search"
+          />
+          <button class="btn btn--accent" type="submit">
+            <svg class="icon icon--white">
+              <use href="{{ url_for('static', filename='images/sprite.svg') }}#search"></use>
+            </svg>
+            Search
+          </button>
+        </div>
+      </form>
     </section>
     <section class="block container block-product" data-aos="fade-up">
       <div class="grid grid--2x3">
@@ -52,7 +58,10 @@
             <img src="{{ url_for('static', filename='images/product.png') }}" alt="" />
           </header>
           <div class="card__body">
-            <h3>Product-Name</h3>
+            <div class="price-container">
+              <h3>Product-Name</h3>
+              <h3 class="price">5</h3>
+            </div>
             <ul class="list list--tick">
               <li class="list__item">In-Stock</li>
             </ul>

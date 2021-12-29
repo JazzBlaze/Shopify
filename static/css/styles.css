@@ -259,6 +259,21 @@ a {
   }
 }
 
+/* price */
+.price {
+  margin-bottom: 0;
+}
+
+.price::before {
+  content: "₹";
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Quantity */
 .quantity {
   display: inline-block;
@@ -417,6 +432,9 @@ a {
   .grid--2x3 {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
+  }
+  .grid--nx3 {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
