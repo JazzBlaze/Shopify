@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="block container block-product" data-aos="zoom-in-up">
+      <header class="block__header">
+        <h2>Search For Your Products</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
+          exercitationem?
+        </p>
+      </header>
+      <div class="input-group">
+        <input
+          type="text"
+          class="input"
+          placeholder="Enter product name here..."
+        />
+        <button class="btn btn--accent">
+          <svg class="icon icon--white">
+            <use href="{{ url_for('static', filename='images/sprite.svg') }}#search"></use>
+          </svg>
+          Search
+        </button>
+      </div>
+    </section>
+    <section class="block container block-product" data-aos="fade-up">
+      <div class="grid grid--nx3">
+        {% for id, name, price, image in items %}
+        <div class="card">
+          <header class="card__header">
+            <img src="{{ url_for('static', filename=image) }}" alt="" />
+          </header>
+          <div class="card__body">
+            <div class="price-container">
+              <h3>{{ name }}</h3>
+              <h3 class="price">{{ price }}</h3>
+            </div>
+            <ul class="list list--tick">
+              <li class="list__item">In-Stock</li>
+            </ul>
+            <div class="quantity-container">
+              <p class="quantity__header">Quantity:</p>
+              <div class="quantity buttons__added">
+                <input type="button" value="-" class="minus" />
+                <input
+                  type="number"
+                  step="1"
+                  min="1"
+                  max=""
+                  name="quantity"
+                  value="1"
+                  title="Qty"
+                  class="input-text qty text"
+                  size="4"
+                  pattern=""
+                  inputmode=""
+                />
+                <input type="button" value="+" class="plus" />
+              </div>
+            </div>
+            <button class="btn btn--outline btn--block">Buy Now</button>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+{% endblock %}

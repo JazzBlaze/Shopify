@@ -2,7 +2,7 @@ import sqlite3
 from thefuzz import process
 from random import sample
 
-con = sqlite3.connect("data/items.db")
+con = sqlite3.connect("static/data/items.db", check_same_thread=False)
 cur = con.cursor()
 # Initialize database if it doesn't exist
 cur.execute(
@@ -24,8 +24,4 @@ def get_items(query=""):
     output_lst = (
         [i for i, j in process.extract(query, lst)] if query else sample(lst, len(lst))
     )
-    dct_convert = [
-        {"id": i1, "name": i2, "description": i3, "price": i4, "image": i5}
-        for i1, i2, i3, i4, i5 in output_lst
-    ]
-    return dct_convert
+    return output_lst
