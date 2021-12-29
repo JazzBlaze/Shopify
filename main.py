@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from flask import url_for
+import urllib.parse
 from utility import db_utilities
 
 app = Flask(__name__)
@@ -13,7 +14,8 @@ app = Flask(__name__)
 def home():
     if request.method == "POST":
         value = request.form.get("search")
-        return redirect(url_for("product") + f"?search={value}")
+        query = urllib.parse.urlencode({"search": value}, doseq=False)
+        return redirect(url_for("product") + f"?{query}")
     return render_template("home.html")
 
 
