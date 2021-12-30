@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+        <title>Logged In</title>
+    </head>
+    <body class= "container-fluid">
+        <article>
+            <h1>Logged in successfully!</h1>
+            <form action="{{ url_for('product') }}">
+                <input type="submit" value="Go to product page" />
+            </form>
+        </article>
+        </button>
+    </body>
+</html>
