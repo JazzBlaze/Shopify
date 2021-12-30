@@ -8,19 +8,22 @@
           exercitationem?
         </p>
       </header>
-      <div class="input-group">
-        <input
-          type="text"
-          class="input"
-          placeholder="Enter product name here..."
-        />
-        <button class="btn btn--accent">
-          <svg class="icon icon--white">
-            <use href="{{ url_for('static', filename='images/sprite.svg') }}#search"></use>
-          </svg>
-          Search
-        </button>
-      </div>
+      <form method="POST">
+        <div class="input-group">
+          <input
+            type="text"
+            class="input"
+            placeholder="Enter product name here..."
+            name = "search"
+          />
+          <button class="btn btn--accent" type="submit">
+            <svg class="icon icon--white">
+              <use href="{{ url_for('static', filename='images/sprite.svg') }}#search"></use>
+            </svg>
+            Search
+          </button>
+        </div>
+      </form>
     </section>
     <section class="block container block-product" data-aos="fade-up">
       <div class="grid grid--nx3">
