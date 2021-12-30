@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign up</title>
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/temp_login_style.css') }}">
+  </head>
+
+  <body>
+
+    <!-- Nav -->
+    <nav class="container-fluid">
+      <ul>
+        <li><a href="./" class="contrast" onclick="event.preventDefault()"><strong>Shopify</strong></a></li>
+      </ul>
+    </nav><!-- ./ Nav -->
+
+    <!-- Main -->
+    <main class="container">
+      <article class="grid">
+        <div>
+          <hgroup>
+            <h1>Signup</h1>
+            <h2>Signup for shopify.</h2>
+          </hgroup>
+          <form method="POST">
+            <input type="text" name="signup" placeholder="Sign up" aria-label="signup" autocomplete="nickname" required>
+            <input type="password" name="password" placeholder="Password" aria-label="Password" autocomplete="current-password" required>
+            <button type="submit" class="contrast">Sign Up</button>
+          </form>
+        </div>
+        <div></div>
+      </article>
+    </main><!-- ./ Main -->
+
+  </body>
+
+</html>

@@ -39,3 +39,10 @@ def get_cart(name):
         .split(",")
     )
     return temp
+
+
+def verify_password(name, password):
+    temp = cur.execute(
+        "SELECT password FROM users WHERE name = :name", {"name": name}
+    ).fetchall()[0][0]
+    return password == temp

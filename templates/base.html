@@ -22,9 +22,9 @@
           <use href="{{ url_for('static', filename='images/sprite.svg') }}#menu"></use>
         </svg>
         <ul class="list nav__list collapsible__content">
-          <li class="nav__item"><a href="#">Sign in</a></li>
-          <li class="nav__item"><a href="#">Buy</a></li>
-          <li class="nav__item"><a href="#">Customer Care</a></li>
+          <li class="nav__item"><a href="{{ url_for('signup') }}">Sign Up</a></li>
+          <li class="nav__item"><a href="{{ url_for('login') }}">Log In</a></li>
+          <li class="nav__item"><a href="{{ url_for('logout') }}">Log Out</a></li>
           <li class="nav__item"><a href="#">About</a></li>
         </ul>
       </nav>
