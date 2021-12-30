@@ -786,3 +786,10 @@ a {
 .callout-signup {
   transform: translateY(5rem);
 }
+
+/* cart page*/
+.cart__btn {
+  display: flex;
+  margin-left: 40rem;
+  margin-right: 40rem;
+}
