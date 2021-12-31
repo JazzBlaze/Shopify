@@ -43,27 +43,30 @@
             <ul class="list list--tick">
               <li class="list__item">In-Stock</li>
             </ul>
-            <div class="quantity-container">
-              <p class="quantity__header">Quantity:</p>
-              <div class="quantity buttons__added">
-                <input type="button" value="-" class="minus" />
-                <input
-                  type="number"
-                  step="1"
-                  min="1"
-                  max=""
-                  name="quantity"
-                  value="1"
-                  title="Qty"
-                  class="input-text qty text"
-                  size="4"
-                  pattern=""
-                  inputmode=""
-                />
-                <input type="button" value="+" class="plus" />
+            <form action = "" method = "post">
+              <div class="quantity-container">
+                <p class="quantity__header">Quantity:</p>
+                <div class="quantity buttons__added">
+                  <input type="button" value="-" class="minus" />
+                  <input
+                    type="number"
+                    step="1"
+                    min="1"
+                    max=""
+                    name="quantity"
+                    value="1"
+                    title="Qty"
+                    class="input-text qty text"
+                    size="4"
+                    pattern=""
+                    inputmode=""
+                  />
+                  <input type="button" value="+" class="plus" />
+                  <input type="hidden" value="{{id}}" name="product_id" />
+                </div>
               </div>
-            </div>
-            <button class="btn btn--outline btn--block">Buy Now</button>
+            <button type="submit" class="btn btn--outline btn--block">Buy Now</button>
+          </form>
           </div>
         </div>
         {% endfor %}

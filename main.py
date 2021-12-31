@@ -23,8 +23,18 @@ def login_cred_template(*args, **kwargs):
 def home():
     if request.method == "POST":
         value = request.form.get("search")
-        query = urllib.parse.urlencode({"search": value}, doseq=False)
-        return redirect(url_for("product") + f"?{query}")
+        if value:
+            query = urllib.parse.urlencode({"search": value}, doseq=False)
+            return redirect(url_for("product") + f"?{query}")
+        else:
+            name, password = request.cookies.get("name"), request.cookies.get(
+                "password"
+            )
+            if name and password and user_db.verify_password(name, password):
+                print(request.form)
+                return ("", 204)
+            else:
+                return redirect(url_for("login"))
     check_query = request.cookies.get("query")
     if check_query:
         query = urllib.parse.urlencode({"search": check_query}, doseq=False)
@@ -43,8 +53,12 @@ def product():
 
         if request.method == "POST":
             value = request.form.get("search")
-            query = urllib.parse.urlencode({"search": value}, doseq=False)
-            return redirect(url_for("product") + f"?{query}")
+            if value:
+                query = urllib.parse.urlencode({"search": value}, doseq=False)
+                return redirect(url_for("product") + f"?{query}")
+            else:
+                print(request.form)
+                return ("", 204)
 
         if value:
             query = urllib.parse.urlencode({"search": value}, doseq=False)
