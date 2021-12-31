@@ -6,12 +6,14 @@ from flask import url_for
 from flask import make_response
 import urllib.parse
 from utility import item_db_util
+from utility import user_db
 
 app = Flask(__name__)
 
 
 def login_cred_template(*args, **kwargs):
-    logged_in = request.cookies.get("name") and request.cookies.get("password")
+    name, password = request.cookies.get("name"), request.cookies.get("password")
+    logged_in = name and password and user_db.verify_password(name, password)
     kwargs["logged_in"] = bool(logged_in)
     return render_template(*args, **kwargs)
 
@@ -37,19 +39,19 @@ def home():
 def product():
     name = request.cookies.get("name")
     password = request.cookies.get("password")
-    if name and password:
+    if name and password and user_db.verify_password(name, password):
         value = request.cookies.get("query")
+
+        if request.method == "POST":
+            value = request.form.get("search")
+            query = urllib.parse.urlencode({"search": value}, doseq=False)
+            return redirect(url_for("product") + f"?{query}")
 
         if value:
             query = urllib.parse.urlencode({"search": value}, doseq=False)
             resp = redirect(url_for("product") + f"?{query}")
             resp.set_cookie("query", "", expires=0)
             return resp
-
-        if request.method == "POST":
-            value = request.form.get("search")
-            query = urllib.parse.urlencode({"search": value}, doseq=False)
-            return redirect(url_for("product") + f"?{query}")
 
         search = request.args.get("search", "")
         items = item_db_util.get_items(search)
@@ -64,16 +66,32 @@ def product():
 def login():
     name = request.cookies.get("name")
     password = request.cookies.get("password")
-    if name and password:
-        return redirect(url_for("home"))
+    if name or password:
+        if not name:
+            resp = make_response(redirect(url_for("login")))
+            resp.set_cookie("password", "", expires=0)
+        elif not password:
+            resp = make_response(redirect(url_for("login")))
+            resp.set_cookie("name", "", expires=0)
+        elif user_db.verify_password(name, password):
+            return redirect(url_for("home"))
+        else:
+            resp = make_response(redirect(url_for("login")))
+            resp.set_cookie("name", "", expires=0)
+            resp.set_cookie("password", "", expires=0)
+            return resp
     if request.method == "POST":
         login = request.form.get("login")
         password = request.form.get("password")
-        resp = resp = make_response(redirect(url_for("home")))
-        resp.set_cookie("name", login, max_age=60 * 60 * 5)
-        resp.set_cookie("password", password, max_age=60 * 60 * 5)
-        return resp
-    return login_cred_template("login.html")
+        if user_db.verify_password(login, password):
+            resp = make_response(redirect(url_for("home")))
+            resp.set_cookie("name", login)
+            resp.set_cookie("password", password)
+            return resp
+        else:
+            print(login, password, user_db.verify_password(login, password))
+            return redirect(url_for("login"))
+    return render_template("login.html")
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -81,14 +99,27 @@ def signup():
     name = request.cookies.get("name")
     password = request.cookies.get("password")
     if name or password:
-        return redirect(url_for("home"))
+        if not name:
+            resp = make_response(redirect(url_for("signup")))
+            resp.set_cookie("password", "", expires=0)
+        elif not password:
+            resp = make_response(redirect(url_for("signup")))
+            resp.set_cookie("name", "", expires=0)
+        elif user_db.verify_password(name, password):
+            return redirect(url_for("home"))
+        else:
+            resp = make_response(redirect(url_for("signup")))
+            resp.set_cookie("name", "", expires=0)
+            resp.set_cookie("password", "", expires=0)
+            return resp
 
     if request.method == "POST":
-        login = request.form.get("signup")
+        name = request.form.get("signup")
         password = request.form.get("password")
-        resp = resp = make_response(redirect(url_for("home")))
-        resp.set_cookie("name", login, max_age=60 * 60 * 5)
-        resp.set_cookie("password", password, max_age=60 * 60 * 5)
+        user_db.insert_user(name, password)
+        resp = make_response(redirect(url_for("home")))
+        resp.set_cookie("name", name)
+        resp.set_cookie("password", password)
         return resp
     return render_template("signup.html")
 

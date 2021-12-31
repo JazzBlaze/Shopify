@@ -14,15 +14,16 @@ CREATE TABLE IF NOT EXISTS users (
 con.commit()
 
 
-def insert_user(dct):
+def insert_user(name, password):
     cur.execute(
         "INSERT INTO users VALUES(:name, :password, :cart)",
         {
-            "name": dct["name"],
-            "password": dct["password"],
+            "name": name,
+            "password": password,
             "cart": "",
         },
     )
+    con.commit()
 
 
 def update_cart(new_cart: list, name):
@@ -30,6 +31,7 @@ def update_cart(new_cart: list, name):
         "UPDATE users SET cart=:cart WHERE name=:name",
         {"cart": ",".join(new_cart), "name": name},
     )
+    con.commit()
 
 
 def get_cart(name):
@@ -42,7 +44,10 @@ def get_cart(name):
 
 
 def verify_password(name, password):
-    temp = cur.execute(
-        "SELECT password FROM users WHERE name = :name", {"name": name}
-    ).fetchall()[0][0]
+    try:
+        temp = cur.execute(
+            "SELECT password FROM users WHERE name = :name", {"name": name}
+        ).fetchall()[0][0]
+    except IndexError:
+        return False
     return password == temp
