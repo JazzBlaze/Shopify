@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
-  <body>
+  <body  onunload="deleteAllCookies()">
     <header>
       <nav class="nav collapsible">
         <a class="nav__brand" href="/"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="" /></a>
@@ -22,9 +22,12 @@
           <use href="{{ url_for('static', filename='images/sprite.svg') }}#menu"></use>
         </svg>
         <ul class="list nav__list collapsible__content">
-          <li class="nav__item"><a href="{{ url_for('signup') }}">Sign Up</a></li>
-          <li class="nav__item"><a href="{{ url_for('login') }}">Log In</a></li>
-          <li class="nav__item"><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% if logged_in %}
+            <li class="nav__item"><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% else %}
+            <li class="nav__item"><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li class="nav__item"><a href="{{ url_for('login') }}">Log In</a></li>
+          {% endif %}
           <li class="nav__item"><a href="#">About</a></li>
         </ul>
       </nav>
