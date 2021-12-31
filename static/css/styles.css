@@ -262,6 +262,7 @@ a {
 /* price */
 .price {
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .price::before {
@@ -274,6 +275,10 @@ a {
   justify-content: space-between;
 }
 
+.price__product {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /* Quantity */
 .quantity {
   display: inline-block;
@@ -365,9 +370,18 @@ a {
 }
 .card__header,
 .card__body {
-  padding: 2rem 7%;
+  padding: 1rem 3.5%;
 }
 
+.card__header {
+  width: 300px;
+  height: 250px;
+}
+.card__header > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 /* Quotes */
 .quote {
   font-size: 3rem;
@@ -771,4 +785,11 @@ a {
 /* Sign-up Callout */
 .callout-signup {
   transform: translateY(5rem);
+}
+
+/* cart page*/
+.cart__btn {
+  display: flex;
+  margin-left: 40rem;
+  margin-right: 40rem;
 }

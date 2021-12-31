@@ -10,7 +10,7 @@ Shopify - For your home needs
           <p class="hero__tagline">
             Tell us what you need & we deliver under 24 hours.
           </p>
-          <a href="" class="btn btn--accent btn--stretched">Get Started</a>
+          <a href="{{ url_for('product') }}" class="btn btn--accent btn--stretched">Get Started</a>
         </header>
         <picture data-aos="slide-up">
           <source
@@ -59,7 +59,7 @@ Shopify - For your home needs
           </header>
           <div class="card__body">
             <div class="price-container">
-              <h3>Product-Name</h3>
+              <h3 class="price__product">Product-Name</h3>
               <h3 class="price">5</h3>
             </div>
             <ul class="list list--tick">
