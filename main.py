@@ -31,8 +31,7 @@ def home():
         resp = redirect(url_for("product") + f"?{query}")
         resp.set_cookie("query", "", expires=0)
         return resp
-
-    return login_cred_template("home.html")
+    return login_cred_template("home.html", items=item_db_util.get_items("")[:6])
 
 
 @app.route("/product", methods=["GET", "POST"])

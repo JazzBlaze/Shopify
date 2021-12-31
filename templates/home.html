@@ -51,16 +51,16 @@ Shopify - For your home needs
       </form>
     </section>
     <section class="block container block-product" data-aos="fade-up">
-      <div class="grid grid--2x3">
-        {% for i in range(6) %}
+      <div class="grid grid--nx3">
+        {% for id, name, price, image in items %}
         <div class="card">
           <header class="card__header">
-            <img src="{{ url_for('static', filename='images/product.png') }}" alt="" />
+            <img src="{{ url_for('static', filename=image) }}" alt="" />
           </header>
           <div class="card__body">
             <div class="price-container">
-              <h3 class="price__product">Product-Name</h3>
-              <h3 class="price">5</h3>
+              <h3 class="price__product">{{ name }}</h3>
+              <h3 class="price">{{ price }}</h3>
             </div>
             <ul class="list list--tick">
               <li class="list__item">In-Stock</li>
