@@ -23,16 +23,27 @@ def login_cred_template(*args, **kwargs):
 def home():
     if request.method == "POST":
         value = request.form.get("search")
-        query = urllib.parse.urlencode({"search": value}, doseq=False)
-        return redirect(url_for("product") + f"?{query}")
+        if value:
+            query = urllib.parse.urlencode({"search": value}, doseq=False)
+            return redirect(url_for("product") + f"?{query}")
+        else:
+            name, password = request.cookies.get("name"), request.cookies.get(
+                "password"
+            )
+            if name and password and user_db.verify_password(name, password):
+                quantity = request.form.get("quantity")
+                pid = request.form.get("product_id")
+                user_db.add_to_cart(int(pid), int(quantity), name)
+                return ("", 204)
+            else:
+                return redirect(url_for("login"))
     check_query = request.cookies.get("query")
     if check_query:
         query = urllib.parse.urlencode({"search": check_query}, doseq=False)
         resp = redirect(url_for("product") + f"?{query}")
         resp.set_cookie("query", "", expires=0)
         return resp
-
-    return login_cred_template("home.html")
+    return login_cred_template("home.html", items=item_db_util.get_items("")[:6])
 
 
 @app.route("/product", methods=["GET", "POST"])
@@ -44,8 +55,14 @@ def product():
 
         if request.method == "POST":
             value = request.form.get("search")
-            query = urllib.parse.urlencode({"search": value}, doseq=False)
-            return redirect(url_for("product") + f"?{query}")
+            if value:
+                query = urllib.parse.urlencode({"search": value}, doseq=False)
+                return redirect(url_for("product") + f"?{query}")
+            else:
+                quantity = request.form.get("quantity")
+                pid = request.form.get("product_id")
+                user_db.add_to_cart(int(pid), int(quantity), name)
+                return ("", 204)
 
         if value:
             query = urllib.parse.urlencode({"search": value}, doseq=False)
@@ -145,3 +162,23 @@ def logout_fr():
         return resp
     else:
         return redirect(url_for("login"))
+
+
+@app.route("/cart", methods=["GET", "POST"])
+def cart():
+    name = request.cookies.get("name")
+    password = request.cookies.get("password")
+    if not (name and password and user_db.verify_password(name, password)):
+        return redirect(url_for("login"))
+    if request.method == "POST":
+        if request.form.get("delete_button"):
+            user_db.remove_from_cart(int(request.form.get("product_id")), name)
+            login_cred_template("cart.html", items=item_db_util.connect_cart_item(name))
+        elif request.form.get("update_button"):
+            user_db.modify_cart(
+                int(request.form.get("product_id")),
+                int(request.form.get("quantity")),
+                name,
+            )
+            return ("", 204)
+    return login_cred_template("cart.html", items=item_db_util.connect_cart_item(name))
