@@ -34,7 +34,7 @@ def home():
                 quantity = request.form.get("quantity")
                 pid = request.form.get("product_id")
                 user_db.add_to_cart(int(pid), int(quantity), name)
-                return ("", 204)
+                return redirect(url_for("product"))
             else:
                 return redirect(url_for("login"))
     check_query = request.cookies.get("query")
@@ -173,12 +173,14 @@ def cart():
     if request.method == "POST":
         if request.form.get("delete_button"):
             user_db.remove_from_cart(int(request.form.get("product_id")), name)
-            login_cred_template("cart.html", items=item_db_util.connect_cart_item(name))
         elif request.form.get("update_button"):
             user_db.modify_cart(
                 int(request.form.get("product_id")),
                 int(request.form.get("quantity")),
                 name,
             )
-            return ("", 204)
-    return login_cred_template("cart.html", items=item_db_util.connect_cart_item(name))
+    items = item_db_util.connect_cart_item(name)
+    prices = item_db_util.calculate_prices(name)
+    total = sum(prices)
+    items = tuple(i + (j,) for i, j in zip(items, prices))
+    return login_cred_template("cart.html", items=items, total=total)
