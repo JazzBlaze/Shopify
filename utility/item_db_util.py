@@ -26,7 +26,7 @@ def similar(a, b):
 def get_items(query=""):
     lst = cur.execute("SELECT * FROM items").fetchall()
     if query:
-        lst.sort(key=lambda i: similar(i[1], query))
+        lst.sort(key=lambda i: similar(i[1], query), reverse=True)
     else:
         shuffle(lst)
     return lst
