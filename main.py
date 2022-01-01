@@ -31,7 +31,9 @@ def home():
                 "password"
             )
             if name and password and user_db.verify_password(name, password):
-                print(request.form)
+                quantity = request.form.get("quantity")
+                pid = request.form.get("product_id")
+                user_db.add_to_cart(int(pid), int(quantity), name)
                 return ("", 204)
             else:
                 return redirect(url_for("login"))
@@ -57,7 +59,9 @@ def product():
                 query = urllib.parse.urlencode({"search": value}, doseq=False)
                 return redirect(url_for("product") + f"?{query}")
             else:
-                print(request.form)
+                quantity = request.form.get("quantity")
+                pid = request.form.get("product_id")
+                user_db.add_to_cart(int(pid), int(quantity), name)
                 return ("", 204)
 
         if value:
