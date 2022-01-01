@@ -1,7 +1,7 @@
 import sqlite3
-from thefuzz import process
-from random import sample
+from random import shuffle
 from utility import user_db
+from difflib import SequenceMatcher
 
 con = sqlite3.connect("static/data/items.db", check_same_thread=False)
 cur = con.cursor()
@@ -19,12 +19,17 @@ CREATE TABLE IF NOT EXISTS items (
 con.commit()
 
 
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
+
+
 def get_items(query=""):
     lst = cur.execute("SELECT * FROM items").fetchall()
-    output_lst = (
-        [i for i, j in process.extract(query, lst)] if query else sample(lst, len(lst))
-    )
-    return output_lst
+    if query:
+        lst.sort(key=lambda i: similar(i[1], query))
+    else:
+        shuffle(lst)
+    return lst
 
 
 def get_item_details(product_id):

@@ -106,7 +106,6 @@ def login():
             resp.set_cookie("password", password)
             return resp
         else:
-            print(login, password, user_db.verify_password(login, password))
             return redirect(url_for("login"))
     return render_template("login.html")
 
