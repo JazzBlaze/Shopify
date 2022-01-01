@@ -39,3 +39,16 @@ def connect_cart_item(name):
     except TypeError:
         form_dct = {}
     return [get_item_details(i) + tuple([form_dct[i]]) for i in form_dct]
+
+
+def calculate_prices(name):
+    try:
+        form_dct = dict(map(int, i.split()) for i in user_db.get_cart(name))
+    except TypeError:
+        form_dct = {}
+    prices = []
+    for i in form_dct:
+        _, _, price, _ = get_item_details(i)
+        quantity = form_dct[i]
+        prices.append(price * quantity)
+    return prices

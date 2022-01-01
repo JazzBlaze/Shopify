@@ -7,10 +7,14 @@ Shopify - Cart
     <div class="cart__btn"><button class="btn btn--outline btn--block">Checkout</button></div>
     <section class="block container block-product" data-aos="fade-up">
       {% if not items %}
-        <h3 class="block__header">There is no item in your cart</h3>
+        <h3 class="block__header">There are no items in your cart</h3>
       {% endif %}
+      <div class="block__header">
+        <p>Total amount: </p>
+        <h3 class="price">{{ total }}</h3>
+      </div>
       <div class="grid grid--nx3">
-        {% for id, name, price, image, quantity in items %}
+        {% for id, name, price, image, quantity, item_price in items %}
           <div class="card">
             <header class="card__header">
               <img src="{{ url_for('static', filename=image) }}" alt="" />

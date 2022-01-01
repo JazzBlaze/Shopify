@@ -25,8 +25,9 @@
           <li class="nav__item"><a href="#">About</a></li>
           <li class="nav__item"><a href="{{ url_for('home') }}">Home</a></li>
           {% if logged_in %}
+            <li class="nav__item"><a href="{{ url_for('product') }}">Products</a></li>
+            <li class="nav__item"><a href="{{ url_for('cart') }}">My Cart</a></li>
             <li class="nav__item"><a href="{{ url_for('logout') }}">Log Out</a></li>
-            <li class="nav__item"><a href="{{ url_for('cart') }}">Cart</a></li>
           {% else %}
             <li class="nav__item"><a href="{{ url_for('signup') }}">Sign Up</a></li>
             <li class="nav__item"><a href="{{ url_for('login') }}">Log In</a></li>
