@@ -84,3 +84,25 @@ def reset_cart(new_cart: list, name):
         {name: "name"},
     )
     con.commit()
+
+
+def remove_from_cart(value: int, name):
+    try:
+        form_dct = dict(map(int, i.split()) for i in get_cart(name))
+    except TypeError:
+        form_dct = {}
+    if value in form_dct:
+        del form_dct[value]
+    lst = [f"{i} {j}" for i, j in form_dct.items()]
+    update_cart(lst, name)
+
+
+def modify_cart(value: int, quantity: int, name):
+    try:
+        form_dct = dict(map(int, i.split()) for i in get_cart(name))
+    except TypeError:
+        form_dct = {}
+    if value in form_dct:
+        form_dct[value] = quantity
+    lst = [f"{i} {j}" for i, j in form_dct.items()]
+    update_cart(lst, name)

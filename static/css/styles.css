@@ -793,3 +793,18 @@ a {
   margin-left: 40rem;
   margin-right: 40rem;
 }
+
+/* logout page */
+.logout {
+  align-items: center;
+  background: rgb(231, 231, 231);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.logout .card {
+  background: #fff;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}

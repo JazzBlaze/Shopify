@@ -162,3 +162,23 @@ def logout_fr():
         return resp
     else:
         return redirect(url_for("login"))
+
+
+@app.route("/cart", methods=["GET", "POST"])
+def cart():
+    name = request.cookies.get("name")
+    password = request.cookies.get("password")
+    if not (name and password and user_db.verify_password(name, password)):
+        return redirect(url_for("login"))
+    if request.method == "POST":
+        if request.form.get("delete_button"):
+            user_db.remove_from_cart(int(request.form.get("product_id")), name)
+            login_cred_template("cart.html", items=item_db_util.connect_cart_item(name))
+        elif request.form.get("update_button"):
+            user_db.modify_cart(
+                int(request.form.get("product_id")),
+                int(request.form.get("quantity")),
+                name,
+            )
+            return ("", 204)
+    return login_cred_template("cart.html", items=item_db_util.connect_cart_item(name))
