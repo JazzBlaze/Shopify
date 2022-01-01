@@ -15,45 +15,42 @@ Shopify - Cart
       </div>
       <div class="grid grid--nx3">
         {% for id, name, price, image, quantity, item_price in items %}
-          <div class="card">
-            <header class="card__header">
-              <img src="{{ url_for('static', filename=image) }}" alt="" />
-            </header>
+        <div class="card">
+          <header class="card__header">
+            <img src="{{ url_for('static', filename=image) }}" alt="" />
+          </header>
+          <div class="card__body">
+            <div class="price-container">
+              <h3 class="price__product">{{ name }}</h3>
+              <h3 class="price">{{ price }}</h3>
+            </div>
             <form action = "" method = "post">
-              <div class="card__body">
-                <div class="price-container">
-                  <h3>{{ name }}</h3>
-                  <h3 class="price">{{ price }}</h3>
+              <div class="quantity-container">
+                <p class="quantity__header">Quantity:</p>
+                <div class="quantity buttons__added">
+                  <input type="button" value="-" class="minus" />
+                  <input
+                    type="number"
+                    step="1"
+                    min="1"
+                    max=""
+                    name="quantity"
+                    value="{{ quantity }}"
+                    title="Qty"
+                    class="input-text qty text"
+                    size="4"
+                    pattern=""
+                    inputmode=""
+                  />
+                  <input type="button" value="+" class="plus" />
+                  <input type="hidden" value="{{ id }}" name="product_id" />
                 </div>
-                <ul class="list list--tick">
-                  <li class="list__item">In-Stock</li>
-                </ul>
-                  <div class="quantity-container">
-                    <p class="quantity__header">Quantity:</p>
-                    <div class="quantity buttons__added">
-                      <input type="button" value="-" class="minus" />
-                      <input
-                        type="number"
-                        step="1"
-                        min="1"
-                        max=""
-                        name="quantity"
-                        value="{{ quantity }}"
-                        title="Qty"
-                        class="input-text qty text"
-                        size="4"
-                        pattern=""
-                        inputmode=""
-                      />
-                      <input type="button" value="+" class="plus" />
-                    </div>
-                  </div>
-                <input type="hidden" value="{{ id }}" name="product_id" />
-                <input type="submit" class="btn btn--accent btn--block" name="update_button" value="Update Cart"/>
-                <input type="submit" class="btn btn--accent btn--block" name="delete_button" value="Remove From Cart"/>
               </div>
-            </form>
+              <input type="submit" class="btn btn--accent btn--block" name="update_button" value="Update Cart"/>
+              <input type="submit" class="btn btn--accent btn--block" name="delete_button" value="Remove From Cart"/>
+          </form>
           </div>
+        </div>
         {% endfor %}
       </div>
     </section>
