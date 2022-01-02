@@ -106,7 +106,7 @@ def login():
             resp.set_cookie("password", password)
             return resp
         else:
-            return redirect(url_for("login"))
+            return render_template("login.html", incorrect_login=True)
     return render_template("login.html")
 
 
@@ -132,6 +132,8 @@ def signup():
     if request.method == "POST":
         name = request.form.get("signup")
         password = request.form.get("password")
+        if user_db.check_username_exists(name):
+            return render_template("signup.html", incorrect_signup=True)
         user_db.insert_user(name, password)
         resp = make_response(redirect(url_for("home")))
         resp.set_cookie("name", name)

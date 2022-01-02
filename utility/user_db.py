@@ -106,3 +106,7 @@ def modify_cart(value: int, quantity: int, name):
         form_dct[value] = quantity
     lst = [f"{i} {j}" for i, j in form_dct.items()]
     update_cart(lst, name)
+
+
+def check_username_exists(name):
+    return bool(cur.execute("select name from users where name=:name", {"name": name}))
