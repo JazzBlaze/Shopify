@@ -35,26 +35,26 @@ cd Shopify
 
 ## GUI way
 
-Visit https://github.com/JazzBlaze/Shopify on your preferred browser. Click code -> download zip on top right.  
-![tutorial1](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial1.png)  
+Visit https://github.com/Arghya-AB/Shopify on your preferred browser. Click code -> download zip on top right.  
+![tutorial1](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial1.png)  
 Locate the downloaded file  
-![tutorial2](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial2.png)  
+![tutorial2](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial2.png)  
 Right click the file and unzip it  
-![tutorial3](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial3.png)  
+![tutorial3](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial3.png)  
 Navigate into the unzipped folder and double click the powershell script  
-![tutorial4](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial4.png)
-Windows might show a security warning. Ignore and open it, you can view the source code of the file you want to [here](https://github.com/JazzBlaze/Shopify/blob/main/deploy_and_view.ps1)  
-![tutorial5](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial5.png)
-If you get an error in red text, search "Powershell" in windows search and open it. Run the following code to bypass certificate checks. Read about it [here](https://caiomsouza.medium.com/fix-for-powershell-script-not-digitally-signed-69f0ed518715).
-![tutorial6](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial6.png)
-![tutorial7](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial7.png)
-Close the terminal and double click the file again. Windows smart screen may stop you but select "Run anyway".
-This will automatically set up a virtual environment, download the required libraries, run the flask app and redirect the browser to the required page.
-![tutorial8](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial8.png)
-In case it fails to open the link, simply navigate to http://127.0.0.1:5000/ on your browser.
-![tutorial9](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial9.png)
-The frontend should be visible now.
-![tutorial10](https://github.com/JazzBlaze/Shopify/tree/main/assets/tutorial10.png)
+![tutorial4](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial4.png)
+Windows might show a security warning. Ignore and open it, you can view the source code of the file you want to [here](https://github.com/Arghya-AB/Shopify/blob/main/deploy_and_view.ps1)  
+![tutorial5](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial5.png)  
+If you get an error in red text, search "Powershell" in windows search and open it. Run the following code to bypass certificate checks. Read about it [here](https://caiomsouza.medium.com/fix-for-powershell-script-not-digitally-signed-69f0ed518715).  
+![tutorial6](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial6.png)  
+![tutorial7](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial7.png)  
+Close the terminal and double click the file again. Windows smart screen may stop you but select "Run anyway".  
+This will automatically set up a virtual environment, download the required libraries, run the flask app and redirect the browser to the required page.  
+![tutorial8](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial8.png)  
+In case it fails to open the link, simply navigate to http://127.0.0.1:5000/ on your browser.  
+![tutorial9](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial9.png)  
+The frontend should be visible now.  
+![tutorial10](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial10.png)
 
 # For development
 
