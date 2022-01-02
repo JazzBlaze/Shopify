@@ -109,4 +109,8 @@ def modify_cart(value: int, quantity: int, name):
 
 
 def check_username_exists(name):
-    return bool(cur.execute("select name from users where name=:name", {"name": name}))
+    return bool(
+        cur.execute(
+            "select name from users where name=:name", {"name": name}
+        ).fetchall()
+    )
