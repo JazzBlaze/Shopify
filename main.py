@@ -22,7 +22,6 @@ def login_cred_template(*args, **kwargs):
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        print(request.form)
         value = request.form.get("search")
         if value is not None:
             query = urllib.parse.urlencode({"search": value}, doseq=False)
