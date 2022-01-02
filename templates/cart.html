@@ -7,10 +7,11 @@ Shopify - Cart
     <hr>
     {% if not items %}
         <h3 class="block__header">There are no items in your cart</h3>
-    {% endif %}
+    {% else %}
     <div class="block__header">
         <h3>{{ total_items }} items<br>Total amount:  ₹{{ total }}</h3>
     </div>
+    {% endif %}
     <section class="block container block-product" data-aos="fade-up">
       <div class="grid grid--nx3">
         {% for id, name, price, image, quantity, item_price in items %}
