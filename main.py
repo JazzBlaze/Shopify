@@ -188,3 +188,8 @@ def cart():
     return login_cred_template(
         "cart.html", items=items, total=total, total_items=total_items
     )
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")

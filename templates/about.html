@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %} 
+    About Shopify
+{% endblock %}
+{% block content %}
+    <section class="block block-about container" data-aos="zoom-in-up">
+      <h2 class="block__header">Our Team</h2>
+      <div class="grid grid--1x2">
+        <div class="card">
+          <div class="header__container">
+            <div class="ellipse card__header">
+              <div class="ellipse__image">
+                <img src="{{ url_for('static', filename='images/thejas.jpg') }}" alt="image of a person" />
+              </div>
+            </div>
+          </div>
+          <div class="card__body">
+            <h3>Thejas Sanjeev</h3>
+            <h4>Lead Frontend Developer</h4>
+            <a class="socials" href="https://github.com/JazzBlaze"
+              ><img src="{{ url_for('static', filename='images/github.png') }}" alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="header__container">
+            <div class="ellipse card__header">
+              <div class="ellipse__image">
+                <img src="{{ url_for('static', filename='images/arghya.png') }}" alt="image of a person" />
+              </div>
+            </div>
+          </div>
+          <div class="card__body">
+            <h3>Arghya-AB</h3>
+            <h4>Lead Backend Developer</h4>
+            <a class="socials" href="https://github.com/Arghya-AB"
+              ><img src="{{ url_for('static', filename='images/github.png') }}" alt=""
+            /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
