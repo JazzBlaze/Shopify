@@ -34,7 +34,7 @@ def home():
                 quantity = request.form.get("quantity")
                 pid = request.form.get("product_id")
                 user_db.add_to_cart(int(pid), int(quantity), name)
-                return redirect(url_for("product"))
+                return ("", 204)
             else:
                 return redirect(url_for("login"))
     check_query = request.cookies.get("query")
@@ -192,4 +192,4 @@ def cart():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return login_cred_template("about.html")
