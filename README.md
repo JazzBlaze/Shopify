@@ -36,7 +36,7 @@ cd Shopify
 ## GUI way
 
 Visit https://github.com/Arghya-AB/Shopify on your preferred browser. Click code -> download zip on top right.  
-![tutorial1](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial1.png?raw=True)  
+![tutorial1](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial1.png)  
 Locate the downloaded file  
 ![tutorial2](https://github.com/Arghya-AB/Shopify/tree/main/assets/tutorial2.png)  
 Right click the file and unzip it  
