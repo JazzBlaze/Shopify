@@ -36,6 +36,9 @@
           maxlength="255"
         />
       </div>
+      {% if incorrect_login %}
+        <p style="color: red;">Invalid name or password credentials</p>
+      {% endif %}
       <button class="btn">Sign in</button>
       <p class="muted">Need to create an account? Sign up <a href="{{ url_for('signup') }}">here</a></p>
     </form>

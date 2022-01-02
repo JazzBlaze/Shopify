@@ -36,6 +36,9 @@
           maxlength="255"
         />
       </div>
+      {% if incorrect_signup %}
+        <p style="color: red;">Username already exists</p>
+      {% endif %}
       <button class="btn">Sign Up</button>
       <p class="muted">Already have an account? Log in <a href="{{ url_for('login') }}">here</a></p>
     </form>
