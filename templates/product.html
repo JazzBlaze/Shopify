@@ -1,74 +1,80 @@
-{% extends "base.html" %}
-{% block title %}
-  Product
-{% endblock %}
-{% block content %}
-    <section class="block container block-product" data-aos="zoom-in-up">
-      <header class="block__header">
-        <h2>Search For Your Products</h2>
-        <p>
-          Quickly search for your required products using an advanced and accurate search!
-        </p>
+{% extends "base.html" %} {% block title %} Product {% endblock %} {% block
+content %}
+<section class="block container block-product" data-aos="zoom-in-up">
+  <header class="block__header">
+    <h2>Search For Your Products</h2>
+    <p>
+      Quickly search for your required products using an advanced and accurate
+      search!
+    </p>
+  </header>
+  <form method="POST">
+    <div class="input-group">
+      <input
+        type="text"
+        class="input"
+        placeholder="Enter product name here..."
+        name="search"
+      />
+      <button class="btn btn--accent" type="submit">
+        <svg class="icon icon--white">
+          <use
+            href="{{ url_for('static', filename='images/sprite.svg') }}#search"
+          ></use>
+        </svg>
+        Search
+      </button>
+    </div>
+  </form>
+</section>
+<section class="block container block-product" data-aos="fade-up">
+  <div class="grid grid--nx3">
+    {% for id, name, price, image in items %}
+    <div class="card">
+      <header class="card__header">
+        <img src="{{ url_for('static', filename=image) }}" alt="" />
       </header>
-      <form method="POST">
-        <div class="input-group">
-          <input
-            type="text"
-            class="input"
-            placeholder="Enter product name here..."
-            name = "search"
-          />
-          <button class="btn btn--accent" type="submit">
-            <svg class="icon icon--white">
-              <use href="{{ url_for('static', filename='images/sprite.svg') }}#search"></use>
-            </svg>
-            Search
-          </button>
+      <div class="card__body">
+        <div class="price-container">
+          <h3 class="price__product">{{ name }}</h3>
+          <h3 class="price">{{ price }}</h3>
         </div>
-      </form>
-    </section>
-    <section class="block container block-product" data-aos="fade-up">
-      <div class="grid grid--nx3">
-        {% for id, name, price, image in items %}
-        <div class="card">
-          <header class="card__header">
-            <img src="{{ url_for('static', filename=image) }}" alt="" />
-          </header>
-          <div class="card__body">
-            <div class="price-container">
-              <h3 class="price__product">{{ name }}</h3>
-              <h3 class="price">{{ price }}</h3>
+        <ul class="list list--tick">
+          <li class="list__item">In-Stock</li>
+        </ul>
+        <form action="" method="post">
+          <div class="quantity-container">
+            <p class="quantity__header">Quantity:</p>
+            <div class="quantity buttons__added">
+              <input type="button" value="-" class="minus" />
+              <input
+                type="number"
+                step="1"
+                min="1"
+                max=""
+                name="quantity"
+                value="1"
+                title="Qty"
+                class="input-text qty text"
+                size="4"
+                pattern=""
+                inputmode=""
+              />
+              <input type="button" value="+" class="plus" />
+              <input type="hidden" value="{{ id }}" name="product_id" />
             </div>
-            <ul class="list list--tick">
-              <li class="list__item">In-Stock</li>
-            </ul>
-            <form action = "" method = "post">
-              <div class="quantity-container">
-                <p class="quantity__header">Quantity:</p>
-                <div class="quantity buttons__added">
-                  <input type="button" value="-" class="minus" />
-                  <input
-                    type="number"
-                    step="1"
-                    min="1"
-                    max=""
-                    name="quantity"
-                    value="1"
-                    title="Qty"
-                    class="input-text qty text"
-                    size="4"
-                    pattern=""
-                    inputmode=""
-                  />
-                  <input type="button" value="+" class="plus" />
-                  <input type="hidden" value="{{ id }}" name="product_id" />
-                </div>
-              </div>
-            <button type="submit" class="btn btn--outline btn--block">Buy Now</button>
-          </form>
           </div>
-        </div>
-        {% endfor %}
+          <button
+            onclick="M.toast({html: 'Added to Cart', classes: 'rounded'})"
+            type="submit"
+            class="btn btn--outline btn--block"
+          >
+            Add to Cart
+          </button>
+        </form>
       </div>
-    </section>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}

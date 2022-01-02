@@ -10,27 +10,49 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href= "{{ url_for('static', filename='css/normalize.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/materialize.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
-  <body  onunload="deleteAllCookies()">
+  <body onunload="deleteAllCookies()">
     <header>
       <nav class="nav collapsible">
-        <a class="nav__brand" href="/"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="" /></a>
+        <a class="nav__brand" href="/"
+          ><img
+            src="{{ url_for('static', filename='images/logo.svg') }}"
+            alt=""
+        /></a>
         <svg class="icon icon--white nav__toggler">
-          <use href="{{ url_for('static', filename='images/sprite.svg') }}#menu"></use>
+          <use
+            href="{{ url_for('static', filename='images/sprite.svg') }}#menu"
+          ></use>
         </svg>
         <ul class="list nav__list collapsible__content">
           <li class="nav__item"><a href="#">About</a></li>
           <li class="nav__item"><a href="{{ url_for('home') }}">Home</a></li>
           {% if logged_in %}
-            <li class="nav__item"><a href="{{ url_for('product') }}">Products</a></li>
-            <li class="nav__item"><a href="{{ url_for('cart') }}">My Cart</a></li>
-            <li class="nav__item"><a href="{{ url_for('logout') }}">Log Out</a></li>
+          <li class="nav__item">
+            <a href="{{ url_for('product') }}">Products</a>
+          </li>
+          <li class="nav__item"><a href="{{ url_for('cart') }}">My Cart</a></li>
+          <li class="nav__item">
+            <a href="{{ url_for('logout') }}">Log Out</a>
+          </li>
           {% else %}
-            <li class="nav__item"><a href="{{ url_for('signup') }}">Sign Up</a></li>
-            <li class="nav__item"><a href="{{ url_for('login') }}">Log In</a></li>
+          <li class="nav__item">
+            <a href="{{ url_for('signup') }}">Sign Up</a>
+          </li>
+          <li class="nav__item"><a href="{{ url_for('login') }}">Log In</a></li>
           {% endif %}
         </ul>
       </nav>
@@ -42,7 +64,9 @@
           <div class="collapsible__header">
             <h2 class="collapsible__heading footer__heading">Products</h2>
             <svg class="icon icon--white collapsible__chevron">
-              <use href="{{ url_for('static', filename='images/sprite.svg') }}#chevron"></use>
+              <use
+                href="{{ url_for('static', filename='images/sprite.svg') }}#chevron"
+              ></use>
             </svg>
           </div>
           <div class="collapsible__content">
@@ -57,7 +81,9 @@
           <div class="collapsible__header">
             <h2 class="collapsible__heading footer__heading">Company</h2>
             <svg class="icon icon--white collapsible__chevron">
-              <use href="{{ url_for('static', filename='images/sprite.svg') }}#chevron"></use>
+              <use
+                href="{{ url_for('static', filename='images/sprite.svg') }}#chevron"
+              ></use>
             </svg>
           </div>
           <div class="collapsible__content">
@@ -72,7 +98,9 @@
           <div class="collapsible__header">
             <h2 class="collapsible__heading footer__heading">Support</h2>
             <svg class="icon icon--white collapsible__chevron">
-              <use href="{{ url_for('static', filename='images/sprite.svg') }}#chevron"></use>
+              <use
+                href="{{ url_for('static', filename='images/sprite.svg') }}#chevron"
+              ></use>
             </svg>
           </div>
           <div class="collapsible__content">
@@ -84,7 +112,10 @@
           </div>
         </section>
         <div class="footer__brand">
-          <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="" />
+          <img
+            src="{{ url_for('static', filename='images/logo.svg') }}"
+            alt=""
+          />
           <p class="footer__copyright">Copyright 2021 ThejasXArghya</p>
         </div>
       </div>
@@ -100,5 +131,6 @@
     <script>
       AOS.init();
     </script>
+    <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
   </body>
 </html>

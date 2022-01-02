@@ -1,152 +1,173 @@
-{% extends "base.html" %}
-{% block title %}
-Shopify - For your home needs
-{% endblock %}
-{% block content %}
-    <section class="block block--dark block--skewed-left hero">
-      <div class="container grid grid--1x2">
-        <header class="block__header hero__content" data-aos="fade-right">
-          <h1 class="block__heading">Meet Your Home Needs With A Click</h1>
-          <p class="hero__tagline">
-            Tell us what you need & we deliver under 24 hours.
-          </p>
-          <a href="{{ url_for('product') }}" class="btn btn--accent btn--stretched">Get Started</a>
-        </header>
-        <picture data-aos="slide-up">
-          <source
-            type="image/webp"
-            srcset="{{ url_for('static', filename='images/shopping-cart.png') }} 1x, {{ url_for('static', filename='images/shopping-cart.png') }} 2x"
-          />
-          <source
-            type="image/png"
-            srcset="{{ url_for('static', filename='images/shopping-cart.png') }} 1x, {{ url_for('static', filename='images/shopping-cart.png') }} 2x"
-          />
-          <img class="hero__image" src="{{ url_for('static', filename='images/shopping-cart.png') }}" alt="" />
-        </picture>
-      </div>
-    </section>
-    <section class="block container block-product" data-aos="zoom-in-up">
-      <header class="block__header">
-        <h2>Search For Your Products</h2>
-        <p>
-          Quickly search for your required products using an advanced and accurate search!
-        </p>
+{% extends "base.html" %} {% block title %} Shopify - For your home needs {%
+endblock %} {% block content %}
+<section class="block block--dark block--skewed-left hero">
+  <div class="container grid grid--1x2">
+    <header class="block__header hero__content" data-aos="fade-right">
+      <h1 class="block__heading">Meet Your Home Needs With A Click</h1>
+      <p class="hero__tagline">
+        Tell us what you need & we deliver under 24 hours.
+      </p>
+      <a href="{{ url_for('product') }}" class="btn btn--accent btn--stretched"
+        >Get Started</a
+      >
+    </header>
+    <picture data-aos="slide-up">
+      <source
+        type="image/webp"
+        srcset="{{ url_for('static', filename='images/shopping-cart.png') }} 1x, {{ url_for('static', filename='images/shopping-cart.png') }} 2x"
+      />
+      <source
+        type="image/png"
+        srcset="{{ url_for('static', filename='images/shopping-cart.png') }} 1x, {{ url_for('static', filename='images/shopping-cart.png') }} 2x"
+      />
+      <img
+        class="hero__image"
+        src="{{ url_for('static', filename='images/shopping-cart.png') }}"
+        alt=""
+      />
+    </picture>
+  </div>
+</section>
+<section class="block container block-product" data-aos="zoom-in-up">
+  <header class="block__header">
+    <h2>Search For Your Products</h2>
+    <p>
+      Quickly search for your required products using an advanced and accurate
+      search!
+    </p>
+  </header>
+  <form method="POST">
+    <div class="input-group">
+      <input
+        type="text"
+        class="input"
+        placeholder="Enter product name here..."
+        name="search"
+      />
+      <button class="btn btn--accent" type="submit">
+        <svg class="icon icon--white">
+          <use
+            href="{{ url_for('static', filename='images/sprite.svg') }}#search"
+          ></use>
+        </svg>
+        Search
+      </button>
+    </div>
+  </form>
+</section>
+<section class="block container block-product" data-aos="fade-up">
+  <div class="grid grid--nx3">
+    {% for id, name, price, image in items %}
+    <div class="card">
+      <header class="card__header">
+        <img src="{{ url_for('static', filename=image) }}" alt="" />
       </header>
-      <form method="POST">
-        <div class="input-group">
-          <input
-            type="text"
-            class="input"
-            placeholder="Enter product name here..."
-            name = "search"
-          />
-          <button class="btn btn--accent" type="submit">
-            <svg class="icon icon--white">
-              <use href="{{ url_for('static', filename='images/sprite.svg') }}#search"></use>
-            </svg>
-            Search
-          </button>
+      <div class="card__body">
+        <div class="price-container">
+          <h3 class="price__product">{{ name }}</h3>
+          <h3 class="price">{{ price }}</h3>
         </div>
-      </form>
-    </section>
-    <section class="block container block-product" data-aos="fade-up">
-      <div class="grid grid--nx3">
-      {% for id, name, price, image in items %}
-        <div class="card">
-          <header class="card__header">
-            <img src="{{ url_for('static', filename=image) }}" alt="" />
-          </header>
-          <div class="card__body">
-            <div class="price-container">
-              <h3 class="price__product">{{ name }}</h3>
-              <h3 class="price">{{ price }}</h3>
-            </div>
-            <ul class="list list--tick">
-              <li class="list__item">In-Stock</li>
-            </ul>
-            <form action = "" method = "post">
-              <div class="quantity-container">
-                <p class="quantity__header">Quantity:</p>
-                <div class="quantity buttons__added">
-                  <input type="button" value="-" class="minus" />
-                  <input
-                    type="number"
-                    step="1"
-                    min="1"
-                    max=""
-                    name="quantity"
-                    value="1"
-                    title="Qty"
-                    class="input-text qty text"
-                    size="4"
-                    pattern=""
-                    inputmode=""
-                  />
-                  <input type="button" value="+" class="plus" />
-                  <input type="hidden" value="{{id}}" name="product_id" />
-                </div>
-              </div>
-            <button type="submit" class="btn btn--outline btn--block">Buy Now</button>
-          </form>
-          </div>
-        </div>
-      {% endfor %}
-      </div>
-    </section>
-    <section class="block" data-aos="zoom-in-up">
-      <header class="block__header">
-        <h2>What our Customers are Saying</h2>
-        <p>
-          Here's what our customers are saying about our world class delivery and products!
-        </p>
-      </header>
-      <div class="container">
-        <div class="card testimonial">
-          <div class="grid grid--1x2">
-            <div class="testimonial__image">
-              <img
-                src="{{ url_for('static', filename='images/testimonial.jpg') }}"
-                alt="A happy, smiling customer"
+        <ul class="list list--tick">
+          <li class="list__item">In-Stock</li>
+        </ul>
+        <form action="" method="post">
+          <div class="quantity-container">
+            <p class="quantity__header">Quantity:</p>
+            <div class="quantity buttons__added">
+              <input type="button" value="-" class="minus" />
+              <input
+                type="number"
+                step="1"
+                min="1"
+                max=""
+                name="quantity"
+                value="1"
+                title="Qty"
+                class="input-text qty text"
+                size="4"
+                pattern=""
+                inputmode=""
               />
-              <span class="icon-container icon-container--accent">
-                <svg class="icon icon--white icon--small">
-                  <use href="{{ url_for('static', filename='images/sprite.svg') }}#quotes"></use>
-                </svg>
-              </span>
+              <input type="button" value="+" class="plus" />
+              <input type="hidden" value="{{id}}" name="product_id" />
             </div>
-            <blockquote class="quote">
-              <p class="quote__text">
-                Shopify met and exceeded all my expectations. Their service was blazing fast and I am very satisfied with the no bloat user interface of the website making it easy to search products.
-              </p>
-              <footer>
-                <div class="media">
-                  <div class="media__image">
-                    <svg class="icon icon--primary quote__line">
-                      <use href="{{ url_for('static', filename='images/sprite.svg') }}#line"></use>
-                    </svg>
-                  </div>
-                  <div class="media__body">
-                    <h3 class="media__title quote__author">John Smith</h3>
-                    <p class="quote__organization">ABC Company</p>
-                  </div>
-                </div>
-              </footer>
-            </blockquote>
           </div>
-        </div>
-      </div>
-    </section>
-    <div class="container">
-      <div class="callout callout--primary callout-signup">
-        <div class="grid grid--1x2">
-          <div class="callout__content">
-            <h2 class="callout__heading">Ready to Get Started?</h2>
-            <p>
-              Just signup and enjoy our service! It's quick and easy.
-            </p>
-          </div>
-          <a href="{{ url_for('signup') }}" class="btn btn--secondary btn--stretched">Sign-Up</a>
-        </div>
+          <button
+            onclick="M.toast({html: 'Added to Cart', classes: 'rounded'})"
+            type="submit"
+            class="btn btn--outline btn--block"
+          >
+            Add to Cart
+          </button>
+        </form>
       </div>
     </div>
+    {% endfor %}
+  </div>
+</section>
+<section class="block" data-aos="zoom-in-up">
+  <header class="block__header">
+    <h2>What our Customers are Saying</h2>
+    <p>
+      Here's what our customers are saying about our world class delivery and
+      products!
+    </p>
+  </header>
+  <div class="container">
+    <div class="card testimonial">
+      <div class="grid grid--1x2">
+        <div class="testimonial__image">
+          <img
+            src="{{ url_for('static', filename='images/testimonial.jpg') }}"
+            alt="A happy, smiling customer"
+          />
+          <span class="icon-container icon-container--accent">
+            <svg class="icon icon--white icon--small">
+              <use
+                href="{{ url_for('static', filename='images/sprite.svg') }}#quotes"
+              ></use>
+            </svg>
+          </span>
+        </div>
+        <blockquote class="quote">
+          <p class="quote__text">
+            Shopify met and exceeded all my expectations. Their service was
+            blazing fast and I am very satisfied with the no bloat user
+            interface of the website making it easy to search products.
+          </p>
+          <footer>
+            <div class="media">
+              <div class="media__image">
+                <svg class="icon icon--primary quote__line">
+                  <use
+                    href="{{ url_for('static', filename='images/sprite.svg') }}#line"
+                  ></use>
+                </svg>
+              </div>
+              <div class="media__body">
+                <h3 class="media__title quote__author">John Smith</h3>
+                <p class="quote__organization">ABC Company</p>
+              </div>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="callout callout--primary callout-signup">
+    <div class="grid grid--1x2">
+      <div class="callout__content">
+        <h2 class="callout__heading">Ready to Get Started?</h2>
+        <p>Just signup and enjoy our service! It's quick and easy.</p>
+      </div>
+      <a
+        href="{{ url_for('signup') }}"
+        class="btn btn--secondary btn--stretched"
+        >Sign-Up</a
+      >
+    </div>
+  </div>
+</div>
 {% endblock %}
