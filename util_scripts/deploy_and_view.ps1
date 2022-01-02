@@ -3,5 +3,5 @@ python -m venv .venv
 python -m pip install -U pip
 python -m pip install -r requirements.txt
 $env:FLASK_APP = "main"
-flask run
 Start-Process "http://127.0.0.1:5000/"
+flask run
