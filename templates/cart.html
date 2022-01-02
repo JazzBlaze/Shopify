@@ -4,56 +4,54 @@ Shopify - Cart
 {% endblock %}
 {% block content %}
     <h2 class="block__header">My Cart</h2>
-    <div class="cart__btn"><button class="btn btn--outline btn--block">Checkout</button></div>
-    <section class="block container block-product" data-aos="fade-up">
-      {% if not items %}
+    <hr>
+    {% if not items %}
         <h3 class="block__header">There are no items in your cart</h3>
-      {% endif %}
-      <div class="block__header">
-        <p>Total amount: </p>
-        <h3 class="price">{{ total }}</h3>
-      </div>
+    {% else %}
+    <div class="block__header">
+        <h3>{{ total_items }} items<br>Total amount:  ₹{{ total }}</h3>
+    </div>
+    {% endif %}
+    <section class="block container block-product" data-aos="fade-up">
       <div class="grid grid--nx3">
         {% for id, name, price, image, quantity, item_price in items %}
-          <div class="card">
-            <header class="card__header">
-              <img src="{{ url_for('static', filename=image) }}" alt="" />
-            </header>
+        <div class="card">
+          <header class="card__header">
+            <img src="{{ url_for('static', filename=image) }}" alt="" />
+          </header>
+          <div class="card__body">
+            <div class="price-container">
+              <h3 class="price__product">{{ name }}</h3>
+              <h3 class="price">{{ price }}</h3>
+            </div>
             <form action = "" method = "post">
-              <div class="card__body">
-                <div class="price-container">
-                  <h3>{{ name }}</h3>
-                  <h3 class="price">{{ price }}</h3>
+              <div class="quantity-container">
+                <p class="quantity__header">Quantity:</p>
+                <div class="quantity buttons__added">
+                  <input type="button" value="-" class="minus" />
+                  <input
+                    type="number"
+                    step="1"
+                    min="1"
+                    max=""
+                    name="quantity"
+                    value="{{ quantity }}"
+                    title="Qty"
+                    class="input-text qty text"
+                    size="4"
+                    pattern=""
+                    inputmode=""
+                  />
+                  <input type="button" value="+" class="plus" />
+                  <input type="hidden" value="{{ id }}" name="product_id" />
                 </div>
-                <ul class="list list--tick">
-                  <li class="list__item">In-Stock</li>
-                </ul>
-                  <div class="quantity-container">
-                    <p class="quantity__header">Quantity:</p>
-                    <div class="quantity buttons__added">
-                      <input type="button" value="-" class="minus" />
-                      <input
-                        type="number"
-                        step="1"
-                        min="1"
-                        max=""
-                        name="quantity"
-                        value="{{ quantity }}"
-                        title="Qty"
-                        class="input-text qty text"
-                        size="4"
-                        pattern=""
-                        inputmode=""
-                      />
-                      <input type="button" value="+" class="plus" />
-                    </div>
-                  </div>
-                <input type="hidden" value="{{ id }}" name="product_id" />
-                <input type="submit" class="btn btn--accent btn--block" name="update_button" value="Update Cart"/>
-                <input type="submit" class="btn btn--accent btn--block" name="delete_button" value="Remove From Cart"/>
               </div>
-            </form>
+              <input type="submit" class="btn btn--accent btn--block" name="update_button" value="Update Cart"/>
+              <input type="submit" class="btn btn--accent btn--block" name="delete_button" value="Remove From Cart"/>
+          </form>
+          <h4 style = "text-align: center;">Total: ₹{{ item_price }}</h4>
           </div>
+        </div>
         {% endfor %}
       </div>
     </section>

@@ -106,7 +106,6 @@ def login():
             resp.set_cookie("password", password)
             return resp
         else:
-            print(login, password, user_db.verify_password(login, password))
             return redirect(url_for("login"))
     return render_template("login.html")
 
@@ -182,5 +181,8 @@ def cart():
     items = item_db_util.connect_cart_item(name)
     prices = item_db_util.calculate_prices(name)
     total = sum(prices)
+    total_items = sum(int(i[4]) for i in items)
     items = tuple(i + (j,) for i, j in zip(items, prices))
-    return login_cred_template("cart.html", items=items, total=total)
+    return login_cred_template(
+        "cart.html", items=items, total=total, total_items=total_items
+    )
