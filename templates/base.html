@@ -38,7 +38,7 @@
           ></use>
         </svg>
         <ul class="list nav__list collapsible__content">
-          <li class="nav__item"><a href="#">About</a></li>
+          <li class="nav__item"><a href="{{ url_for('about') }}">About</a></li>
           <li class="nav__item"><a href="{{ url_for('home') }}">Home</a></li>
           {% if logged_in %}
           <li class="nav__item">
@@ -88,7 +88,7 @@
           </div>
           <div class="collapsible__content">
             <ul class="list">
-              <li><a href="#">About</a></li>
+              <li><a href="{{ url_for('about') }}">About</a></li>
               <li><a href="#">Affiliates</a></li>
               <li><a href="#">Blog</a></li>
             </ul>
