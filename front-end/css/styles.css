@@ -704,7 +704,7 @@ a {
 /* Footer */
 .footer {
   background: #232323;
-  padding-top: 10rem;
+  padding-top: 5rem;
 }
 
 .footer a {
@@ -805,6 +805,9 @@ a {
 
 .logout .card {
   background: #fff;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding: 4rem 5rem;
+}
+
+.logout__header {
+  margin-top: 0;
 }

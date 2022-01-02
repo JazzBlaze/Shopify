@@ -794,6 +794,10 @@ a {
   margin-right: 40rem;
 }
 
+.cart .btn {
+  padding: 2rem 10%;
+}
+
 /* logout page */
 .logout {
   align-items: center;
