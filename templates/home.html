@@ -1,8 +1,5 @@
-{% extends "base.html" %}
-{% block title %} 
-Shopify - For your home needs 
-{% endblock %} 
-{% block content %}
+{% extends "base.html" %} {% block title %} Shopify - For your home needs {%
+endblock %} {% block content %}
 <section class="block block--dark block--skewed-left hero">
   <div class="container grid grid--1x2">
     <header class="block__header hero__content" data-aos="fade-right">
@@ -108,7 +105,7 @@ Shopify - For your home needs
     {% endfor %}
   </div>
 </section>
-<section class="block container block__header" data-aos="fade-right>
+<section class="block container block__header" data-aos="fade-right">
   <a href="{{ url_for('product') }}" class="btn btn--accent">View More</a>
 </section>
 <section class="block" data-aos="zoom-in-up">
@@ -163,19 +160,19 @@ Shopify - For your home needs
 </section>
 <div class="container">
   {% if not logged_in %}
-    <div class="callout callout--primary callout-signup">
-      <div class="grid grid--1x2">
-        <div class="callout__content">
-          <h2 class="callout__heading">Ready to Get Started?</h2>
-          <p>Just signup and enjoy our service! It's quick and easy.</p>
-        </div>
-        <a
-          href="{{ url_for('signup') }}"
-          class="btn btn--secondary btn--stretched"
-          >Sign-Up</a
-        >
+  <div class="callout callout--primary callout-signup">
+    <div class="grid grid--1x2">
+      <div class="callout__content">
+        <h2 class="callout__heading">Ready to Get Started?</h2>
+        <p>Just signup and enjoy our service! It's quick and easy.</p>
       </div>
+      <a
+        href="{{ url_for('signup') }}"
+        class="btn btn--secondary btn--stretched"
+        >Sign-Up</a
+      >
     </div>
+  </div>
   {% endif %}
 </div>
 {% endblock %}
